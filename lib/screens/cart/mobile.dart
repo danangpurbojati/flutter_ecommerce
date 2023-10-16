@@ -34,24 +34,30 @@ class MobileCart extends StatelessWidget {
         ),
         Expanded(
           flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/cart.png'),
-              const Text(
-                'Uh Oh...!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  fontFamily: 'InterExtraBold',
-                  color: Color(0xff1b4b66) 
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(minWidth: 1, minHeight: 1, maxWidth: 200),
+                  child: Image.asset(
+                    'assets/images/cart.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-              const Text("you haven't added any items")
-            ],
+                const Text(
+                  'Uh Oh...!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    fontFamily: 'InterExtraBold',
+                    color: Color(0xff1b4b66) 
+                  ),
+                ),
+                const Text("you haven't added any items")
+              ],
+            ),
           ),
-        ),
+        ), 
         Align(
           alignment: Alignment.bottomCenter,
           child: InkWell(

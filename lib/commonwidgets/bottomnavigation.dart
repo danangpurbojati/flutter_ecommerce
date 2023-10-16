@@ -3,16 +3,10 @@ import 'package:flutter_ecommerce/screens/cart/cartscreen.dart';
 import 'package:flutter_ecommerce/screens/category/categoryscreen.dart';
 import 'package:flutter_ecommerce/screens/login/loginscreen.dart';
 
-class BottomNavigation extends StatefulWidget {
+class BottomNavigation extends StatelessWidget {
   const BottomNavigation({super.key});
 
-  @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
-}
-
-class _BottomNavigationState extends State<BottomNavigation> {
-
-  void onItemTapped(int index) {
+  void onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
         Navigator.of(context).popUntil((route) => route.isFirst);
@@ -41,7 +35,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: 0,
-      onTap: onItemTapped,
+      onTap: (index){
+        onItemTapped(index, context);
+      },
       fixedColor: const Color(0xff1b4b66),
       unselectedItemColor: const Color(0xff1b4b66),
       items: const [
